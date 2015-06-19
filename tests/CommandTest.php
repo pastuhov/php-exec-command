@@ -9,6 +9,9 @@ use pastuhov\Command\Command;
  */
 class FileStreamTest extends \PHPUnit_Framework_TestCase
 {
+    /**
+     * Simple exec
+     */
     public function testExec()
     {
         $output = Command::exec(
@@ -24,6 +27,9 @@ class FileStreamTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('hello world', $output);
     }
 
+    /**
+     * Test exec exception
+     */
     public function testExecException()
     {
         $this->setExpectedException('Exception');
@@ -34,6 +40,9 @@ class FileStreamTest extends \PHPUnit_Framework_TestCase
 
     }
 
+    /**
+     * Test exec empty command
+     */
     public function testExecEmptyCommand()
     {
         $this->setExpectedException('Exception');
