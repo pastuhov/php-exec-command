@@ -23,14 +23,26 @@ $ composer require pastuhov/php-exec-command
 ## Usage
 
 ```php
-
     $output = Command::exec(
         'echo {phrase}',
         [
             'phrase' => 'hello'
         ]
     );
-    
+    // $output = 'hello'
+```
+or
+```php
+    $output = Command::exec(
+        'echo {phrase}',
+        [
+            'phrase' => [
+                'hello',
+                'world'
+            ]
+        ]
+    );
+    // $output = 'hello world'
 ```
 
 ## Testing
