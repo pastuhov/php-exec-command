@@ -17,7 +17,7 @@ $ composer require pastuhov/php-exec-command
 
 ## Features
 
-* light wight
+* light weight
 * param binding
 * throws an exception if return status >0
 
