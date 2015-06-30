@@ -19,6 +19,7 @@ $ composer require pastuhov/php-exec-command
 
 * light wight
 * param binding
+* Exception trown if return status >0
 
 ## Usage
 
