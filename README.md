@@ -45,6 +45,23 @@ or
     // $output = 'hello world'
 ```
 
+or
+```php
+    try {
+        Command::exec('locate {parody}',
+            [
+                'parody' => [
+                    'pink_unicorn'
+                ]
+            ]
+        );    
+        
+        echo 'unicorn's was found!';
+    } catch (\Exception $e) {
+        echo 'cant find unicorn (';
+    }
+```
+
 ## Testing
 
 ``` bash
