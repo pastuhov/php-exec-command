@@ -1,4 +1,5 @@
 <?php
+
 namespace pastuhov\Command;
 
 /**
@@ -53,7 +54,6 @@ final class Command
      */
     public static function bindParams($commandLine, array $params)
     {
-
         if (count($params) > 0) {
             $wrapper = function ($string) {
                 return '{' . $string . '}';
