@@ -2,8 +2,7 @@
 namespace pastuhov\Command;
 
 /**
- * Command
- * @package pastuhov\Command
+ * Command.
  */
 final class Command
 {
