@@ -1,4 +1,5 @@
 <?php
+
 namespace pastuhov\Command\Test;
 
 use pastuhov\Command\Command;
@@ -18,7 +19,7 @@ class CommandTest extends \PHPUnit_Framework_TestCase
             [
                 'phrase' => [
                     'hello',
-                    'world',
+                    'wor' . 'ld',
                 ],
             ]
         );
@@ -36,7 +37,6 @@ class CommandTest extends \PHPUnit_Framework_TestCase
         $output = Command::exec(
             'echo111'
         );
-
     }
 
     /**
