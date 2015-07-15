@@ -56,7 +56,7 @@ final class Command
 
         if (count($params) > 0) {
             $wrapper = function ($string) {
-                return '{'.$string.'}';
+                return '{' . $string . '}';
             };
             $converter = function ($var) {
                 if (is_array($var)) {
