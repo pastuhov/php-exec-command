@@ -1,4 +1,6 @@
-preset: psr5
+preset: simfony
+enabled:
+  - concat_with_spaces
 disabled:
   - single_blank_line_before_namespace
-  - concat_with_spaces
+  - concat_without_spaces
