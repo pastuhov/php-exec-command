@@ -19,7 +19,7 @@ class CommandTest extends \PHPUnit_Framework_TestCase
                 'phrase' => [
                     'hello',
                     'world',
-                ]
+                ],
             ]
         );
 
