@@ -4,6 +4,7 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/pastuhov/php-exec-command/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/pastuhov/php-exec-command/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/pastuhov/php-exec-command/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/pastuhov/php-exec-command/?branch=master)
 [![Total Downloads](https://poser.pugx.org/pastuhov/php-exec-command/downloads)](https://packagist.org/packages/pastuhov/php-exec-command)
+[![StyleCI](https://styleci.io/repos/37724184/shield)](https://styleci.io/repos/37724184)
 
 Simple php command executor with param binding.
 
