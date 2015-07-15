@@ -4,13 +4,12 @@ namespace pastuhov\Command\Test;
 use pastuhov\Command\Command;
 
 /**
- * Class FileStreamTest
- * @package pastuhov\Command\Test
+ * Class CommandTest.
  */
-class FileStreamTest extends \PHPUnit_Framework_TestCase
+class CommandTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * Simple exec
+     * Simple exec.
      */
     public function testExec()
     {
@@ -19,7 +18,7 @@ class FileStreamTest extends \PHPUnit_Framework_TestCase
             [
                 'phrase' => [
                     'hello',
-                    'world'
+                    'world',
                 ]
             ]
         );
@@ -28,7 +27,7 @@ class FileStreamTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test exec exception
+     * Test exec exception.
      */
     public function testExecException()
     {
@@ -41,7 +40,7 @@ class FileStreamTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test exec empty command
+     * Test exec empty command.
      */
     public function testExecEmptyCommand()
     {
