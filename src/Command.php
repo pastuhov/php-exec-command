@@ -62,6 +62,7 @@ final class Command
                 if (is_array($var)) {
                     $var = implode(' ', $var);
                 }
+                
                 return $var;
             };
 
