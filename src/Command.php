@@ -37,7 +37,7 @@ final class Command
         }
 
         if ($code !== 0) {
-            throw new \Exception($output);
+            throw new \Exception($output . ' Command line: ' . $commandLine);
         }
 
         return $output;
