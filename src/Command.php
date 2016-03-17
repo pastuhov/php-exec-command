@@ -12,12 +12,12 @@ final class Command
 
     /**
      * Execute command with params.
-     * 
+     *
      * @param string $commandLine
      * @param array  $params
-     * 
+     *
      * @return bool|string
-     * 
+     *
      * @throws \Exception
      */
     public static function exec($commandLine, array $params = array())
@@ -45,10 +45,10 @@ final class Command
 
     /**
      * Bind params to command.
-     * 
+     *
      * @param string $commandLine
      * @param array  $params
-     * 
+     *
      * @return string
      */
     public static function bindParams($commandLine, array $params)
