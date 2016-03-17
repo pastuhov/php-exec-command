@@ -2,5 +2,3 @@ preset: psr2
 enabled:
   - no_blank_lines_before_namespace
   - concat_with_spaces
-disabled:
-  - concat_without_spaces
