@@ -20,13 +20,18 @@ final class Command
      *
      * @throws \Exception
      */
-    public static function exec($command, array $params = array())
+    public static function exec($command, array $params = array(), $mergeStdErr=true)
     {
         if (empty($command)) {
             throw new \InvalidArgumentException('Command line is empty');
         }
 
         $command = self::bindParams($command, $params);
+
+        if ($mergeStdErr) {
+            // Redirect stderr to stdout to include it in $output
+            $command .= ' 2>&1';
+        }
 
         exec($command, $output, $code);
 
