@@ -64,6 +64,14 @@ or
     }
 ```
 
+By default, all arguments are escaped using
+[escapeshellarg](https://secure.php.net/manual/en/function.escapeshellarg.php).
+If you need to pass unescaped arguments, use `{!name!}`, like so:
+
+```php
+Command::exec('echo {!path!}', ['path' => '$PATH']);
+```
+
 ## Testing
 
 ``` bash

@@ -13,22 +13,22 @@ final class Command
     /**
      * Execute command with params.
      *
-     * @param string $commandLine
+     * @param string $command
      * @param array  $params
      *
      * @return bool|string
      *
      * @throws \Exception
      */
-    public static function exec($commandLine, array $params = array())
+    public static function exec($command, array $params = array())
     {
-        if (empty($commandLine)) {
+        if (empty($command)) {
             throw new \Exception('Command line is empty');
         }
 
-        $commandLine = self::bindParams($commandLine, $params);
+        $command = self::bindParams($command, $params);
 
-        exec($commandLine, $output, $code);
+        exec($command, $output, $code);
 
         if (count($output) === 0) {
             $output = $code;
@@ -37,7 +37,7 @@ final class Command
         }
 
         if ($code !== 0) {
-            throw new \Exception($output . ' Command line: ' . $commandLine);
+            throw new \Exception($output . ' Command line: ' . $command);
         }
 
         return $output;
@@ -46,38 +46,26 @@ final class Command
     /**
      * Bind params to command.
      *
-     * @param string $commandLine
+     * @param string $command
      * @param array  $params
      *
      * @return string
      */
-    public static function bindParams($commandLine, array $params)
+    public static function bindParams($command, array $params)
     {
-        if (count($params) > 0) {
-            $wrapper = function ($string) {
-                return '{' . $string . '}';
-            };
-            $converter = function ($var) {
-                if (is_array($var)) {
-                    $var = implode(' ', $var);
-                }
-                
-                return $var;
-            };
+        $wrappers = array();
+        $converters = array();
+        foreach ($params as $key => $value) {
 
-            $commandLine = str_replace(
-                array_map(
-                    $wrapper,
-                    array_keys($params)
-                ),
-                array_map(
-                    $converter,
-                    array_values($params)
-                ),
-                $commandLine
-            );
+            // Escaped
+            $wrappers[] = '{' . $key . '}';
+            $converters[] = escapeshellarg(is_array($value) ? implode(' ', $value) : $value);
+
+            // Unescaped
+            $wrappers[] = '{!' . $key . '!}';
+            $converters[] = is_array($value) ? implode(' ', $value) : $value;
         }
 
-        return $commandLine;
+        return str_replace($wrappers, $converters, $command);
     }
 }
