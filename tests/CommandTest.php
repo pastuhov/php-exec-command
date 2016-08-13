@@ -31,7 +31,7 @@ class CommandTest extends \PHPUnit_Framework_TestCase
      */
     public function testExecException()
     {
-        $this->setExpectedException('Exception');
+        $this->setExpectedException('pastuhov\Command\CommandException');
 
         $output = Command::exec(
             'echo111'
@@ -43,7 +43,7 @@ class CommandTest extends \PHPUnit_Framework_TestCase
      */
     public function testExecEmptyCommand()
     {
-        $this->setExpectedException('Exception');
+        $this->setExpectedException('InvalidArgumentException');
 
         $output = Command::exec(
             ''

@@ -23,7 +23,7 @@ final class Command
     public static function exec($command, array $params = array())
     {
         if (empty($command)) {
-            throw new \Exception('Command line is empty');
+            throw new \InvalidArgumentException('Command line is empty');
         }
 
         $command = self::bindParams($command, $params);
@@ -37,7 +37,7 @@ final class Command
         }
 
         if ($code !== 0) {
-            throw new \Exception($output . ' Command line: ' . $command);
+            throw new CommandException($command, $output, $code);
         }
 
         return $output;
