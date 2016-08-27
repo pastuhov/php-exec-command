@@ -31,7 +31,7 @@ class CommandTest extends \PHPUnit_Framework_TestCase
      */
     public function testExecException()
     {
-        $this->setExpectedException('Exception');
+        $this->setExpectedException('pastuhov\Command\CommandException');
 
         $output = Command::exec(
             'echo111'
@@ -43,10 +43,40 @@ class CommandTest extends \PHPUnit_Framework_TestCase
      */
     public function testExecEmptyCommand()
     {
-        $this->setExpectedException('Exception');
+        $this->setExpectedException('InvalidArgumentException');
 
         $output = Command::exec(
             ''
         );
+    }
+
+    /**
+     * Test that arguments are escaped by default
+     */
+    public function testArgumentsEscapedByDefault()
+    {
+        $output = Command::exec(
+            'echo {phrase}',
+            [
+                'phrase' => 'hello $PATH',
+            ]
+        );
+
+        $this->assertEquals('hello $PATH', $output);
+    }
+
+    /**
+     * Test that unescaped arguments can be passed
+     */
+    public function testUnescapedArguments()
+    {
+        $output = Command::exec(
+            'echo {!phrase!}',
+            [
+                'phrase' => 'hello $PATH',
+            ]
+        );
+
+        $this->assertRegexp('/\//', $output);
     }
 }
