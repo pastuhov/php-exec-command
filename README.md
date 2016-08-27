@@ -21,6 +21,7 @@ $ composer require pastuhov/php-exec-command
 * light weight
 * param binding
 * throws an exception if return status >0
+* redirect stderr to stdout if needed
 
 ## Usage
 
