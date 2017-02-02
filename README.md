@@ -59,9 +59,9 @@ or
             ]
         );    
         
-        echo 'unicorn's was found!';
-    } catch (\Exception $e) {
-        echo 'cant find unicorn (';
+        echo "unicorn was found!";
+    } catch (\pastuhov\Command\CommandException $e) {
+        echo "can't find unicorn :(";
     }
 ```
 
