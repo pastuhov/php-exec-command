@@ -11,13 +11,7 @@ before_script:
 
 script:
   - phpunit --coverage-text --coverage-clover=coverage.clover
-  - |
-    sonar-scanner \
-    -Dsonar.projectKey=php-exec-command \
-    -Dsonar.organization=pastuhov-github \
-    -Dsonar.sources=. \
-    -Dsonar.host.url=https://sonarcloud.io \
-    -Dsonar.login=github
+  - sonar-scanner
 
 after_script:
   - if [[ $TRAVIS_PHP_VERSION != 'hhvm' && $TRAVIS_PHP_VERSION != '7.0' ]]; then php vendor/bin/ocular code-coverage:upload --format=php-clover coverage.clover; fi
