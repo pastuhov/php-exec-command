@@ -1,18 +1,9 @@
 language: php
 
 php:
-  - 5.4
-  - 5.5
   - 5.6
   - 7.0
-  - hhvm
-
-matrix:
-  #allow_failures:
-    #- php: 7.0
-  include:
-    - php: 5.4
-      env: 'COMPOSER_FLAGS="--prefer-stable --prefer-lowest"'
+  - 7.1  
 
 before_script:
   - travis_retry composer self-update
@@ -20,6 +11,13 @@ before_script:
 
 script:
   - phpunit --coverage-text --coverage-clover=coverage.clover
+  - sonar-scanner
 
 after_script:
   - if [[ $TRAVIS_PHP_VERSION != 'hhvm' && $TRAVIS_PHP_VERSION != '7.0' ]]; then php vendor/bin/ocular code-coverage:upload --format=php-clover coverage.clover; fi
+  
+addons:
+  sonarcloud:
+    organization: "pastuhov-github" # the key of the org you chose at step #3
+    token:
+      secure: "h1GiCxSn2Yf6WsrB1xmkTqUHIHasIblcb+F/s2KWIkaDejR/UKrQMVcuQ5e+U7V6MTVWZdWaoJUY0XPOHuM4xUph1mDM5/1cQMqZ8ZGteGJ5yUx/E2ZF8rNc3T3NjL7BkC5giDWtDIlDBwc0UA39RvJxNYvZC1xI/ezYFkNxDZ4BfMcmOz0s4XuxwxrfNTO1TXIFOJuXc3utPnL0wcK4zdffxUiYMNf8AKnPA5E8emuUNTk+nlSDxXNNq84JlH1GwhSJT4qt0iPmloafREbbUVSWY0/dhVuCvTLYDkRRFLqie0O27nsW0zY7eMf99vXtuaMoBsnJCrQzfKOiLKp0aUEOhpuQGeMAaT1oqzk9YjrrAY9DssJ4gNw/fyyCaM4JT6MpDFOiW/Y94ROHnGwp6mkJdGnt77m/Mil2+JrRgZ5HEvcUHjwsmO4nSnvAGLHhBVADPbacEJJyGSAJk5pXhaILRefzcY+FKqc4/HgevAOdaCyOjNaPHBByNZAG+nf7J+cfihWyjuJ8VM2x4u5BTZahCUqZh+L2OzRUjjcXqecXkVNVKQmDFzdUIqonSRUKaktDFm2LHjs8R8Dbn7riaP9p8TIfsDMmDehK1JhNV6POvuMSvvAFeLObgqXDfj4HZho/VHmUsTtmyKI7WZXYlPYg72IjP2Hf4gAcA0a23Q4="
